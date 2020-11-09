@@ -40,19 +40,23 @@ public class CharChart {
 
                 String line;
                 while ((line = reader.readLine()) != null) {
-                    char[] charArray = line.replace(" ", "").toCharArray();
+                    char[] charArray = line.toCharArray();
+
                     for (char c : charArray) {
-                        if (charMap.containsKey(c)) {
-                            // if char exists in charMap, value +1
-                            charMap.put(c, charMap.get(c) + 1);
-                        } else {
-                            // if char doesn't exist in charMap
-                            // Add it and set value to 1
-                            charMap.put(c, 1);
+
+                        if (!Character.isWhitespace(c)) {
+
+                            if (charMap.containsKey(c)) {
+                                charMap.put(c, charMap.get(c) + 1);
+                                // if char exists in charMap, value +1
+                            } else {
+                                // if char doesn't exist in charMap
+                                // Add it and set value to 1
+                                charMap.put(c, 1);
+                            }
                         }
                     }
                 }
-
             }
         }
         // Print character occurences
